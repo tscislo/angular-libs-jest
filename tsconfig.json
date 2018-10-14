@@ -23,6 +23,12 @@
       ],
       "my-shared-library/*": [
         "dist/my-shared-library/*"
+      ],
+      "new-lib": [
+        "dist/new-lib"
+      ],
+      "new-lib/*": [
+        "dist/new-lib/*"
       ]
     }
   }

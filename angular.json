@@ -66,8 +66,7 @@
         },
         "test": {
           "builder": "@angular-builders/jest:run",
-          "options": {
-          }
+          "options": {}
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -176,8 +175,7 @@
         },
         "test": {
           "builder": "@angular-builders/jest:run",
-          "options": {
-          }
+          "options": {}
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -243,8 +241,7 @@
         },
         "test": {
           "builder": "@angular-builders/jest:run",
-          "options": {
-          }
+          "options": {}
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -252,6 +249,37 @@
             "tsConfig": [
               "projects/my-shared-library/tsconfig.lib.json",
               "projects/my-shared-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "new-lib": {
+      "root": "projects/new-lib",
+      "sourceRoot": "projects/new-lib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/new-lib/tsconfig.lib.json",
+            "project": "projects/new-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {}
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/new-lib/tsconfig.lib.json",
+              "projects/new-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
