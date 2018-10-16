@@ -1,15 +1,20 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {MySharedLibraryComponent} from './my-shared-library.component';
-import {HttpClient} from '@angular/common/http';
+import { MySharedLibraryComponent } from './my-shared-library.component';
 
 describe('MySharedLibraryComponent', () => {
   let component: MySharedLibraryComponent;
   let fixture: ComponentFixture<MySharedLibraryComponent>;
   let http: any;
+  let getSpy: any;
   beforeEach(async(() => {
     TestBed.configureTestingModule(
       {
+        imports: [
+          HttpClientTestingModule
+        ],
         providers: [
           {
             provide: HttpClient,
@@ -29,6 +34,7 @@ describe('MySharedLibraryComponent', () => {
     component = fixture.componentInstance;
     http = TestBed.get(HttpClient);
     fixture.detectChanges();
+    getSpy = spyOn<any>(http, 'get').and.returnValue({});
   });
 
   it('should create', () => {
@@ -36,9 +42,15 @@ describe('MySharedLibraryComponent', () => {
   });
 
   it('ngOnInit should invoke getAwesomeStuff', () => {
+    component.ngOnInit();
+
+    // Jest Spy
     expect(http.get.mock.calls.length).toBe(1);
     expect(http.get.mock.calls[0][0]).toBe('http://awesomeStuff');
-    component.ngOnInit();
+
+    // Jasmine Spy
+    // expect(getSpy).toHaveBeenCalledTimes(1);
+    // expect(getSpy).toHaveBeenCalledWith('http://awesomeStuff');
   });
 
 });
