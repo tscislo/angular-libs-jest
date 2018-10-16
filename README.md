@@ -15,5 +15,11 @@
 5. Spies
 6. Gotchas with Jest
 
+---
 
+# Debug for specific lib/pattern
+
+```
+npm run -- test:debug --testMatch="**/YOUR_LIB_OR_APP/**/?(*.)+(spec|test).ts"
+```
 

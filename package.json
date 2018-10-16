@@ -6,9 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --detectOpenHandles",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "jest": "jest"
+    "jest": "jest",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
